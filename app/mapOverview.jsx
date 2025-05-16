@@ -11,7 +11,7 @@ const MapOverview = () => {
     if (latitude === null || longitude === null) {
         return (
             <View style={styles.container}>
-                <Text style={{ padding: 20, textAlign: 'center' }}>Can't load your location...</Text>
+                <Text style={{ padding: 20, textAlign: 'center' }}>Loading...</Text>
             </View>
         );
     }

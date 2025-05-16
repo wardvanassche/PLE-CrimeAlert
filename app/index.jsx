@@ -3,7 +3,6 @@ import {Link} from "expo-router";
 import { FontAwesome } from '@expo/vector-icons';
 
 const Home = () => {
-    
     return (
         <View style={styles.container}>
             <Link href="/onboarding" style={styles.helpLink}>
