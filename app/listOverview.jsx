@@ -1,4 +1,4 @@
-import {StyleSheet, Text, TouchableOpacity, View} from "react-native"
+import {StyleSheet, Text, View} from "react-native"
 import {Link} from "expo-router";
 import {FontAwesome} from "@expo/vector-icons";
 import React from "react";
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
     },
     nav: {
-        marginTop: '15%',
+        marginTop: '13%',
         marginHorizontal: 20,
         flexDirection: "row",
         justifyContent: "center",
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: "#fff",
         padding: 5,
-        width: '45%',
+        width: '35%',
         textAlign: 'center',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },

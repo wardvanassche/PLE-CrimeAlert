@@ -1,11 +1,10 @@
-import {ScrollView, StyleSheet, Text, TouchableOpacity, View, Image} from "react-native"
+import {ScrollView, StyleSheet, Text, View, Image} from "react-native"
 import {Link} from "expo-router";
 
 const Onboarding = () => {
     return (
         <View style={styles.container}>
             <ScrollView horizontal={false}
-                        showsVerticalScrollIndicator={false}
                         contentContainerStyle={{ paddingBottom: 120 }}>
                 <Text style={styles.title}>
                     Welkom

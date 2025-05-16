@@ -1,4 +1,4 @@
-import {StyleSheet, Text, TouchableOpacity, View} from "react-native"
+import {StyleSheet, Text, View} from "react-native"
 import {Link} from "expo-router";
 import {FontAwesome} from "@expo/vector-icons";
 import React from "react";
@@ -35,6 +35,7 @@ const MapOverview = () => {
                     latitudeDelta: 0.1,
                     longitudeDelta: 0.1,
                 }}
+                mapType={"hybrid"}
             >
                 <Marker coordinate={{
                     latitude: latitude,
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
     },
     nav: {
         position: 'absolute',
-        top: '7%',
+        top: '6%',
         left: 20,
         right: 20,
         flexDirection: "row",
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
         shadowOffset: {width: 0, height: 2},
         shadowOpacity: 0.1,
         borderWidth: 1,
-        width: '45%',
+        width: '35%',
         textAlign: 'center',
         padding: 5
     },
