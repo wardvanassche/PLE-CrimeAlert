@@ -1,6 +1,6 @@
 {
   "expo": {
-    "scheme": "PLE-CrimeAlert", // aanpassen naar naam
+    "scheme": "PLE-CrimeAlert",
     "name": "PLE-CrimeAlert",
     "slug": "PLE-CrimeAlert",
     "version": "1.0.0",
@@ -31,7 +31,8 @@
         {
           "locationAlwaysAndWhenInUsePermission": "Allow this app to use your location."
         }
-      ]
+      ],
+      "expo-font"
     ]
   }
 }
