@@ -9,7 +9,6 @@ const Report = () => {
     const handleSubmit = () => {
         if (!alertText || !location) {
             Alert.alert("Lege velden", "Vul a.u.b. alle velden in.");
-            return;
         }
     };
 

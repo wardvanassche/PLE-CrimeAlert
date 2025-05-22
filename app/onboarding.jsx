@@ -1,16 +1,16 @@
-import {ScrollView, StyleSheet, Text, View, Image} from "react-native"
+import {ScrollView, StyleSheet, Text, View, Image, SafeAreaView} from "react-native"
 import {Link} from "expo-router";
 
 const Onboarding = () => {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <ScrollView horizontal={false}
                         contentContainerStyle={{ paddingBottom: 120 }}>
                 <Text style={styles.title}>
                     Welkom
                 </Text>
                 <Text style={styles.subtitleBold}>
-                    Onze missie
+                    Ons doel
                 </Text>
                 <Text style={styles.body}>
                     Wij streven ernaar een gevoel van veiligheid en geborgenheid te creëren in de woonomgeving van ouderen.
@@ -52,7 +52,7 @@ const Onboarding = () => {
                     <Text style={styles.linkText}>Verder</Text>
                 </Link>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 
@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
         fontSize: 26,
         fontWeight: 'bold',
         textAlign: 'center',
-        marginTop: 50,
     },
     subtitleBold: {
         fontWeight: 'bold',

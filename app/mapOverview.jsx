@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from "react-native"
+import {SafeAreaView, StyleSheet, Text, View} from "react-native"
 import {Link} from "expo-router";
 import {FontAwesome} from "@expo/vector-icons";
 import React from "react";
@@ -18,14 +18,14 @@ const MapOverview = () => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.nav}>
+            <SafeAreaView style={styles.nav}>
                 <Link href="/listOverview" style={styles.button}>
                     <Text style={styles.text}>Lijst</Text>
                 </Link>
-                <Link href="/mapOverview" style={styles.button}>
+                <Link href="/mapOverview" style={styles.buttonActive}>
                     <Text style={styles.text}>Kaart</Text>
                 </Link>
-            </View>
+            </SafeAreaView>
 
             <MapView
                 style={styles.map}
@@ -35,14 +35,14 @@ const MapOverview = () => {
                     latitudeDelta: 0.1,
                     longitudeDelta: 0.1,
                 }}
-                mapType={"hybrid"}
+                // mapType={"hybridFlyover"}
             >
                 <Marker coordinate={{
                     latitude: latitude,
                     longitude: longitude,
                 }}
-                        title={"Je bent hier"}
-                        pinColor={"blue"}
+                        title="Marker"
+                        pinColor="blue"
                 />
             </MapView>
 
@@ -72,22 +72,26 @@ const styles = StyleSheet.create({
     },
     nav: {
         position: 'absolute',
-        top: '6%',
+        top: '5%',
         left: 20,
         right: 20,
         flexDirection: "row",
         justifyContent: "center",
         zIndex: 10,
     },
-    button: {
-        backgroundColor: "#fff",
-        shadowColor: '#000',
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.1,
-        borderWidth: 1,
+    buttonActive: {
+        backgroundColor: "#558B71",
+        color: "#fff",
+        fontWeight: 'bold',
+        padding: 5,
         width: '35%',
         textAlign: 'center',
-        padding: 5
+    },
+    button: {
+        backgroundColor: "#fff",
+        padding: 5,
+        width: '35%',
+        textAlign: 'center',
     },
     text: {
         fontSize: 24,

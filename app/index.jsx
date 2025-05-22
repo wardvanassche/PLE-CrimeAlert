@@ -1,15 +1,12 @@
-import {StyleSheet, Text, TouchableOpacity, View} from "react-native"
+import {SafeAreaView, StyleSheet, Text, TouchableOpacity, View} from "react-native"
 import {Link} from "expo-router";
-import { FontAwesome } from '@expo/vector-icons';
 
-const Home = () => {
+const Index = () => {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Link href="/onboarding" style={styles.helpLink}>
-                <View style={styles.row}>
-                    <FontAwesome name="question-circle" size={30} color="#000"/>
-                    <Text style={styles.text_bold}>Help</Text>
-                </View>
+                    <Text style={styles.text_bold}>Uitleg nodig?</Text>
+                    <Text style={styles.text_bold}>Druk hier</Text>
             </Link>
             <Link href="/listOverview" style={styles.link}>
                 <Text style={styles.text}>
@@ -35,11 +32,11 @@ const Home = () => {
                     </TouchableOpacity>
                 </View>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 
-export default Home
+export default Index
 
 const styles = StyleSheet.create({
     container: {
@@ -62,18 +59,21 @@ const styles = StyleSheet.create({
     text: {
         color: '#000',
         fontSize: 24,
+        fontFamily: "Inter_400Regular",
     },
     text_bold: {
         color: '#000',
         fontSize: 24,
-        fontWeight: 'bold',
+        fontFamily: "Inter_700Bold",
+
     },
     helpLink: {
         borderWidth: 2,
         borderRadius: 100,
-        width: '40%',
+        width: '55%',
         padding: 10,
         marginBottom: 150,
+        textAlign: 'center',
     },
     row: {
         flexDirection: 'row',
@@ -108,5 +108,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#000',
         fontWeight: 'bold',
+        fontFamily: 'Inter_400'
     },
 })
