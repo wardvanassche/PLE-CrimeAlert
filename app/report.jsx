@@ -2,7 +2,7 @@ import {StyleSheet, Text, TextInput, TouchableOpacity, View, Alert} from "react-
 import React, {useState} from "react";
 import {Link} from "expo-router";
 import {FontAwesome} from "@expo/vector-icons";
-import {db} from "../FirebaseConfig";
+import {db} from "../firebase.config";
 import {collection, addDoc, Timestamp} from "firebase/firestore";
 
 export default function Report() {
