@@ -1,7 +1,7 @@
 import * as Location from 'expo-location';
 import {useState, useEffect} from "react";
 
-const useLocation = () => {
+export default function useLocation() {
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);
     const [errorMsg, setErrorMsg] = useState('');
@@ -43,5 +43,3 @@ const useLocation = () => {
 
     return {latitude, longitude, errorMsg}
 }
-
-export default useLocation;

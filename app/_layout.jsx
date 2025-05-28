@@ -3,11 +3,13 @@ import { ActivityIndicator, View } from 'react-native';
 import { useFonts } from '@expo-google-fonts/inter/useFonts';
 import { Inter_400Regular } from '@expo-google-fonts/inter/400Regular';
 import { Inter_700Bold } from "@expo-google-fonts/inter/700Bold";
+import { Inter_400Regular_Italic} from "@expo-google-fonts/inter";
 
 export default function RootLayout() {
     const [fontsLoaded] = useFonts({
         Inter_400Regular,
-        Inter_700Bold
+        Inter_700Bold,
+        Inter_400Regular_Italic,
     });
 
     if (!fontsLoaded) {

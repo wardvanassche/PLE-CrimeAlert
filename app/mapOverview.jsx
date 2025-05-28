@@ -4,9 +4,13 @@ import {FontAwesome} from "@expo/vector-icons";
 import React from "react";
 import MapView, {Marker} from 'react-native-maps';
 import useLocation from "../hooks/useLocation";
+import useAlerts from "../hooks/useAlerts";
 
 export default function MapOverview() {
     const {latitude, longitude, errorMsg} = useLocation();
+    const {alerts} = useAlerts();
+
+    if (!alerts) return <Text>Loading...</Text>;
 
     if (latitude === null || longitude === null) {
         return (
@@ -32,10 +36,9 @@ export default function MapOverview() {
                 region={{
                     latitude: latitude,
                     longitude: longitude,
-                    latitudeDelta: 0.1,
-                    longitudeDelta: 0.1,
+                    latitudeDelta: 0.01,
+                    longitudeDelta: 0.01,
                 }}
-                mapType={"hybridFlyover"}
             >
                 <Marker coordinate={{
                     latitude: latitude,
@@ -44,6 +47,18 @@ export default function MapOverview() {
                         title="Marker"
                         pinColor="blue"
                 />
+                {alerts.map((alert, index) => (
+                    <View style={styles.item} key={index}>
+                        <Marker coordinate={{
+                            latitude: alert.latitude,
+                            longitude: alert.longitude,
+                        }}
+                                title={alert.alert}
+                                description={alert.location}
+                                pinColor="red"
+                        />
+                    </View>
+                ))}
             </MapView>
 
             <View style={styles.footer}>

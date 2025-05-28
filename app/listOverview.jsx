@@ -2,27 +2,42 @@ import {SafeAreaView, StyleSheet, Text, View} from "react-native"
 import {Link} from "expo-router";
 import {FontAwesome} from "@expo/vector-icons";
 import React from "react";
+import useAlerts from "../hooks/useAlerts";
 
 export default function ListOverview() {
+    const {alerts} = useAlerts();
+
+    if (!alerts) return <Text>Loading...</Text>;
+
     return (
-            <SafeAreaView style={styles.container}>
-                <View style={styles.nav}>
-                    <Link href="/listOverview" style={styles.buttonActive}>
-                        <Text style={styles.text}>Lijst</Text>
-                    </Link>
-                    <Link href="/mapOverview" style={styles.button}>
-                        <Text style={styles.text}>Kaart</Text>
-                    </Link>
-                </View>
-                <View style={styles.footer}>
-                    <Link href="/" style={styles.link}>
-                        <View style={styles.row}>
-                            <FontAwesome name="arrow-left" size={30} color="#000"/>
-                            <Text style={styles.linkText}>Terug</Text>
-                        </View>
-                    </Link>
-                </View>
-            </SafeAreaView>
+        <SafeAreaView style={styles.container}>
+            <View style={styles.nav}>
+                <Link href="/listOverview" style={styles.buttonActive}>
+                    <Text style={styles.text}>Lijst</Text>
+                </Link>
+                <Link href="/mapOverview" style={styles.button}>
+                    <Text style={styles.text}>Kaart</Text>
+                </Link>
+            </View>
+            <View style={styles.items}>
+                {alerts.map((alert, index) => (
+                    <View style={styles.item} key={index}>
+                        <Text style={{fontSize: 20, fontFamily: 'Inter_700Bold'}}>{alert.alert}</Text>
+                        <Text style={{fontSize: 15, fontFamily: 'Inter_400Regular', marginBottom: 5,}}>{alert.location}</Text>
+                        <Text style={{fontSize: 10, fontFamily: 'Inter_400Regular_Italic'}}>Latitude: {alert.latitude}</Text>
+                        <Text style={{fontSize: 10, fontFamily: 'Inter_400Regular_Italic'}}>Longitude: {alert.longitude}</Text>
+                    </View>
+                ))}
+            </View>
+            <View style={styles.footer}>
+                <Link href="/" style={styles.link}>
+                    <View style={styles.row}>
+                        <FontAwesome name="arrow-left" size={30} color="#000"/>
+                        <Text style={styles.linkText}>Terug</Text>
+                    </View>
+                </Link>
+            </View>
+        </SafeAreaView>
     )
 }
 
@@ -35,6 +50,20 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         flexDirection: "row",
         justifyContent: "center",
+    },
+    items: {
+        flex: 1,
+        paddingTop: 20,
+        alignItems: 'center',
+    },
+    item: {
+        backgroundColor: "#558B71",
+        color: "#fff",
+        marginVertical: 20,
+        paddingHorizontal: 15,
+        paddingVertical: 25,
+        borderRadius: 10,
+        width: '80%',
     },
     buttonActive: {
         backgroundColor: "#558B71",
@@ -53,7 +82,6 @@ const styles = StyleSheet.create({
         // Shadow for Android
         elevation: 3,
     },
-
     button: {
         backgroundColor: "#fff",
         padding: 5,

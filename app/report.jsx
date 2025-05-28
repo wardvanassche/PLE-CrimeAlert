@@ -4,10 +4,12 @@ import {Link} from "expo-router";
 import {FontAwesome} from "@expo/vector-icons";
 import {db} from "../firebase.config";
 import {collection, addDoc, Timestamp} from "firebase/firestore";
+import useLocation from "../hooks/useLocation";
 
 export default function Report() {
     const [alert, setAlert] = useState('');
     const [location, setLocation] = useState('');
+    const {latitude, longitude} = useLocation();
 
     const handleSubmit = async () => {
         if (!alert || !location) {
@@ -23,6 +25,8 @@ export default function Report() {
             await addDoc(collection(db, "alerts"), {
                 alert: alert,
                 location: location,
+                latitude: latitude,
+                longitude: longitude,
                 timestamp: Timestamp.now()
             });
 
