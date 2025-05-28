@@ -22,10 +22,10 @@ export default function ListOverview() {
             <View style={styles.items}>
                 {alerts.map((alert, index) => (
                     <View style={styles.item} key={index}>
-                        <Text style={{fontSize: 20, fontFamily: 'Inter_700Bold'}}>{alert.alert}</Text>
-                        <Text style={{fontSize: 15, fontFamily: 'Inter_400Regular', marginBottom: 5,}}>{alert.location}</Text>
-                        <Text style={{fontSize: 10, fontFamily: 'Inter_400Regular_Italic'}}>Latitude: {alert.latitude}</Text>
-                        <Text style={{fontSize: 10, fontFamily: 'Inter_400Regular_Italic'}}>Longitude: {alert.longitude}</Text>
+                        <Text style={{color: '#fff', fontSize: 20, fontFamily: 'Inter_700Bold'}}>{alert.alert}</Text>
+                        <Text style={{color: '#fff', fontSize: 15, fontFamily: 'Inter_400Regular', marginBottom: 5,}}>{alert.location}</Text>
+                        <Text style={{color: '#fff', fontSize: 10, fontFamily: 'Inter_400Regular_Italic'}}>Latitude: {alert.latitude}</Text>
+                        <Text style={{color: '#fff', fontSize: 10, fontFamily: 'Inter_400Regular_Italic'}}>Longitude: {alert.longitude}</Text>
                     </View>
                 ))}
             </View>
@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
     },
     item: {
         backgroundColor: "#558B71",
-        color: "#fff",
         marginVertical: 20,
         paddingHorizontal: 15,
         paddingVertical: 25,
