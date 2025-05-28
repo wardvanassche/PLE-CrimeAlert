@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import {initializeApp} from "firebase/app";
+import {getFirestore} from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -10,8 +11,12 @@ const firebaseConfig = {
     projectId: "ple-crimealert-f13f5",
     storageBucket: "ple-crimealert-f13f5.firebasestorage.app",
     messagingSenderId: "463343177455",
-    appId: "1:463343177455:web:8cacc06f6bd7ad7a78151a"
+    appId: "1:463343177455:web:edb2ee6c919a144d78151a",
+    measurementId: "G-0WQ26K76YZ"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+export {db}

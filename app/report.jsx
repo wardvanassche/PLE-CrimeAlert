@@ -1,50 +1,44 @@
-import {StyleSheet, Text, TextInput, TouchableOpacity, View, Alert, Button} from "react-native";
+import {StyleSheet, Text, TextInput, TouchableOpacity, View, Alert} from "react-native";
 import React, {useState} from "react";
 import {Link} from "expo-router";
 import {FontAwesome} from "@expo/vector-icons";
 import {db} from "../FirebaseConfig";
 import {collection, addDoc, Timestamp} from "firebase/firestore";
+import useLocation from "../hooks/useLocation";
 
 export default function Report() {
     const [alert, setAlert] = useState('');
     const [location, setLocation] = useState('');
-
-    // test function for db
-    async function testFirestoreWrite() {
-        try {
-            await addDoc(collection(db, "testAlerts"), {
-                message: "Test alert",
-                timestamp: Timestamp.now()
-            });
-            console.log("Write succeeded!");
-        } catch (e) {
-            console.error("Write failed:", e);
-        }
-    }
+    const {latitude, longitude} = useLocation();
 
     const handleSubmit = async () => {
         if (!alert || !location) {
-            Alert.alert("Lege velden", "Vul a.u.b. alle velden in.");
+            Alert.alert("Lege velden", "Gelieve alle velden in te vullen.");
             return;
         }
 
-        console.log("Submitting alert:", { alert, location });
+        // Log alert input that's being submitted
+        console.log("Submitting alert:", {alert, location});
 
         try {
             // Add form data to db
             await addDoc(collection(db, "alerts"), {
                 alert: alert,
                 location: location,
+                latitude: latitude,
+                longitude: longitude,
                 timestamp: Timestamp.now()
             });
-            Alert.alert("Success", "Alert succesvol verzonden!");
+
+            // Redirect or navigate
+            Alert.alert("Success", "Melding succesvol verstuurd!");
+
+            // Empty form data
             setAlert('');
             setLocation('');
-
-            // redirect or navigate if needed
         } catch (error) {
             console.error("Error adding document: ", error);
-            Alert.alert("Error", "Couldn't save alert");
+            Alert.alert("Error", "Melding versturen is mislukt.");
         }
     };
 
@@ -69,7 +63,6 @@ export default function Report() {
                 <TouchableOpacity style={styles.button} onPress={handleSubmit}>
                     <Text style={styles.buttonText}>Versturen</Text>
                 </TouchableOpacity>
-                <Button title="test" onPress={testFirestoreWrite} />
             </View>
             <View style={styles.footer}>
                 <Link href="/" style={styles.link}>
@@ -161,4 +154,3 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 });
-

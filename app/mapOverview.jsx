@@ -11,7 +11,7 @@ export default function MapOverview() {
     if (latitude === null || longitude === null) {
         return (
             <View style={styles.container}>
-                <Text style={{ padding: 20, textAlign: 'center' }}>{errorMsg}</Text>
+                <Text style={{padding: 20, textAlign: 'center'}}>{errorMsg}</Text>
             </View>
         );
     }
