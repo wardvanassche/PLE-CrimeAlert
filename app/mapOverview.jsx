@@ -5,13 +5,13 @@ import React from "react";
 import MapView, {Marker} from 'react-native-maps';
 import useLocation from "../hooks/useLocation";
 
-const MapOverview = () => {
+export default function MapOverview() {
     const {latitude, longitude, errorMsg} = useLocation();
 
     if (latitude === null || longitude === null) {
         return (
             <View style={styles.container}>
-                <Text style={{ padding: 20, textAlign: 'center' }}>Loading...</Text>
+                <Text style={{ padding: 20, textAlign: 'center' }}>{errorMsg}</Text>
             </View>
         );
     }
@@ -35,7 +35,7 @@ const MapOverview = () => {
                     latitudeDelta: 0.1,
                     longitudeDelta: 0.1,
                 }}
-                // mapType={"hybridFlyover"}
+                mapType={"hybridFlyover"}
             >
                 <Marker coordinate={{
                     latitude: latitude,
@@ -57,8 +57,6 @@ const MapOverview = () => {
         </View>
     )
 }
-
-export default MapOverview
 
 const styles = StyleSheet.create({
     container: {

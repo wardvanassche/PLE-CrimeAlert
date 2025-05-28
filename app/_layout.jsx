@@ -4,7 +4,7 @@ import { useFonts } from '@expo-google-fonts/inter/useFonts';
 import { Inter_400Regular } from '@expo-google-fonts/inter/400Regular';
 import { Inter_700Bold } from "@expo-google-fonts/inter/700Bold";
 
-const RootLayout = () => {
+export default function RootLayout() {
     const [fontsLoaded] = useFonts({
         Inter_400Regular,
         Inter_700Bold
@@ -33,5 +33,3 @@ const RootLayout = () => {
         </Stack>
     );
 };
-
-export default RootLayout;

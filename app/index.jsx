@@ -1,7 +1,7 @@
 import {SafeAreaView, StyleSheet, Text, TouchableOpacity, View} from "react-native"
 import {Link} from "expo-router";
 
-const Index = () => {
+export default function Index() {
     return (
         <SafeAreaView style={styles.container}>
             <Link href="/onboarding" style={styles.helpLink}>
@@ -35,8 +35,6 @@ const Index = () => {
         </SafeAreaView>
     )
 }
-
-export default Index
 
 const styles = StyleSheet.create({
     container: {

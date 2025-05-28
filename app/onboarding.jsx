@@ -1,7 +1,7 @@
 import {ScrollView, StyleSheet, Text, View, Image, SafeAreaView} from "react-native"
 import {Link} from "expo-router";
 
-const Onboarding = () => {
+export default function Onboarding() {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView horizontal={false}
@@ -55,8 +55,6 @@ const Onboarding = () => {
         </SafeAreaView>
     )
 }
-
-export default Onboarding
 
 const styles = StyleSheet.create({
     container: {

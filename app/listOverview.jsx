@@ -3,7 +3,7 @@ import {Link} from "expo-router";
 import {FontAwesome} from "@expo/vector-icons";
 import React from "react";
 
-const ListOverview = () => {
+export default function ListOverview() {
     return (
             <SafeAreaView style={styles.container}>
                 <View style={styles.nav}>
@@ -25,8 +25,6 @@ const ListOverview = () => {
             </SafeAreaView>
     )
 }
-
-export default ListOverview
 
 const styles = StyleSheet.create({
     container: {

@@ -1,37 +1,44 @@
-import { useState, useEffect } from 'react';
 import * as Location from 'expo-location';
+import {useState, useEffect} from "react";
 
 const useLocation = () => {
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);
     const [errorMsg, setErrorMsg] = useState('');
 
-    const getUserLocation = async () => {
-        let { status } = await Location.requestForegroundPermissionsAsync();
+    const getCurrentLocation = async () => {
+        try {
+            let {status} = await Location.requestForegroundPermissionsAsync();
 
-        if (status !== 'granted') {
-            setErrorMsg('Permission to access location was denied');
-            return;
-        }
+            if (status !== 'granted') {
+                setErrorMsg('Permission to access location was denied');
+                return;
+            }
 
-        let {coords} = await Location.getCurrentPositionAsync({});
-
-        if (coords) {
-            const {latitude, longitude} = coords;
-            console.log(latitude, longitude);
-            setLatitude(latitude);
-            setLongitude(longitude);
-            let response = await Location.reverseGeocodeAsync({
-                latitude, longitude
+            let {coords} = await Location.getCurrentPositionAsync({
+                accuracy: Location.Accuracy.High,
+                showsBackgroundLocationIndicator: true,
             });
 
-            console.log('user location is:', response);
+            if (coords) {
+                const {latitude, longitude} = coords;
+                console.log(latitude, longitude);
+                setLatitude(latitude);
+                setLongitude(longitude);
+                let response = await Location.reverseGeocodeAsync({
+                    latitude, longitude
+                });
+
+                console.log('user location is:', response);
+            }
+        } catch (error) {
+            setErrorMsg(error.message);
         }
     }
 
     useEffect(() => {
         (async () => {
-            await getUserLocation();
+            await getCurrentLocation();
         })();
     }, []);
 
