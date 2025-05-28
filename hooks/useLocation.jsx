@@ -17,7 +17,6 @@ const useLocation = () => {
 
             let {coords} = await Location.getCurrentPositionAsync({
                 accuracy: Location.Accuracy.High,
-                showsBackgroundLocationIndicator: true,
             });
 
             if (coords) {
