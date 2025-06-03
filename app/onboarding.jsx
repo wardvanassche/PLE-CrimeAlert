@@ -1,16 +1,24 @@
 import {ScrollView, StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity} from "react-native"
-import {useRouter} from "expo-router";
+import {usePathname, useRouter} from "expo-router";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Onboarding() {
-
     const router = useRouter();
+    const pathname = usePathname()
 
     const finishOnboarding = async () => {
-        await AsyncStorage.setItem('viewedOnboarding', 'true');
-        const value = await AsyncStorage.getItem('viewedOnboarding');
-        console.log('finished onboarding, value: ', value);
-        router.replace('/');
+        console.log('finished onboarding')
+
+        if(pathname !== '/') {
+            try {
+                console.log("set AsyncStorage, 'viewedOnboarding': true");
+                await AsyncStorage.setItem('viewedOnboarding', 'true');
+                console.log('Router replace to index')
+                router.replace('/')
+            } catch (e) {
+                console.error('error setting onboarding flag', e)
+            }
+        }
     }
 
     return (
@@ -59,7 +67,7 @@ export default function Onboarding() {
             </ScrollView>
             <View style={styles.footer}>
                 <TouchableOpacity onPress={finishOnboarding} style={styles.continue}>
-                    <Text style={styles.continueText}>Verder</Text>
+                    <Text style={styles.continueText}>Alles duidelijk? Druk hier</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
