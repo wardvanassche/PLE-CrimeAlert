@@ -1,11 +1,9 @@
 import {Stack, useRouter} from 'expo-router';
 import "../global.css";
 import { View, ActivityIndicator } from 'react-native';
-import { useFonts } from '@expo-google-fonts/inter'
 import {
+    useFonts,
     Inter_400Regular,
-    Inter_700Bold,
-    Inter_400Regular_Italic,
 } from '@expo-google-fonts/inter'
 
 export default function RootLayout() {
@@ -13,8 +11,6 @@ export default function RootLayout() {
 
     const [fontsLoaded] = useFonts({
         Inter_400Regular,
-        Inter_700Bold,
-        Inter_400Regular_Italic,
     })
 
     if (!fontsLoaded) {
