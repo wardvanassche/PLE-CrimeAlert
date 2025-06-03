@@ -4,7 +4,7 @@ import {Link} from "expo-router";
 import {FontAwesome} from "@expo/vector-icons";
 import {db} from "../firebase.config";
 import {collection, addDoc, Timestamp} from "firebase/firestore";
-import useLocation from "./hooks/useLocation";
+import useLocation from "../hooks/useLocation";
 
 export default function Report() {
     const [alert, setAlert] = useState('');

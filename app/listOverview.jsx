@@ -2,7 +2,7 @@ import {SafeAreaView, ScrollView, StyleSheet, Text, View} from "react-native"
 import {Link} from "expo-router";
 import {FontAwesome} from "@expo/vector-icons";
 import React from "react";
-import useAlerts from "./hooks/useAlerts";
+import useAlerts from "../hooks/useAlerts";
 
 export default function ListOverview() {
     const {alerts} = useAlerts();

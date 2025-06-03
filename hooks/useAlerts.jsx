@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import {db} from "../../firebase.config";
+import {db} from "../firebase.config";
 import {collection, getDocs, query, orderBy} from "firebase/firestore";
 
 export default function useAlerts() {

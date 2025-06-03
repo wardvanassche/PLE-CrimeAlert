@@ -3,8 +3,8 @@ import {Link} from "expo-router";
 import {FontAwesome} from "@expo/vector-icons";
 import React from "react";
 import MapView, {Marker} from 'react-native-maps';
-import useLocation from "./hooks/useLocation";
-import useAlerts from "./hooks/useAlerts";
+import useLocation from "../hooks/useLocation";
+import useAlerts from "../hooks/useAlerts";
 
 export default function MapOverview() {
     const {latitude, longitude, errorMsg} = useLocation();

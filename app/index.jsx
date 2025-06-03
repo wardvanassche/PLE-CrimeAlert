@@ -1,23 +1,13 @@
-import {Button, SafeAreaView, Text, TouchableOpacity, View} from "react-native"
+import {SafeAreaView, Text, TouchableOpacity, View} from "react-native"
 import {Link} from "expo-router";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function HomeScreen() {
-
-    const clearStorage = async () => {
-        await AsyncStorage.clear();
-    }
-
-
     return (
         <SafeAreaView className="flex-1 bg-white px-4 items-center">
             <Link href="/onboarding" className="border-2 rounded-full w-11/20 py-2 mb-36 text-center">
                 <Text className="text-black text-2xl font-bold">Uitleg nodig?</Text>
                 <Text className="text-black text-2xl font-bold">Druk hier</Text>
             </Link>
-
-            <Button title='clear' onPress={clearStorage}/>
-
             <Link href="/listOverview" className="bg-white p-6 w-7/10 items-center shadow-sm mb-1">
                 <Text className="text-2xl font-inter">
                     Ik wil meldingen

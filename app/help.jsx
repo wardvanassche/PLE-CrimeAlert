@@ -1,26 +1,10 @@
 import {ScrollView, StyleSheet, Text, View, Image, SafeAreaView} from "react-native"
 import {Link} from "expo-router";
 
-export default function Onboarding() {
+export default function Help() {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView horizontal={false} style={{marginBottom:'10%'}}>
-                <Text style={styles.title}>
-                    Welkom
-                </Text>
-                <Text style={styles.subtitleBold}>
-                    Ons doel
-                </Text>
-                <Text style={styles.body}>
-                    Wij streven ernaar een gevoel van veiligheid en geborgenheid te creëren in de woonomgeving van ouderen.
-
-                    Waarom speciaal voor ouderen?
-                    Deze app is met zorg en aandacht ontwikkeld voor ouderen.
-                </Text>
-                <Text style={styles.body}>
-                    Een eenvoudige en duidelijke opzet staat centraal, zodat iedereen er makkelijk mee aan de slag kan — ongeacht ervaring met technologie.
-                    Toegankelijkheid en gebruiksgemak staan centraal, zodat u zich gehoord, gezien en ondersteund voelt.
-                </Text>
                 <Text style={styles.subtitleNormal}>
                     <Text style={styles.subtitleBold}>Bekijk </Text>
                     meldingen
@@ -47,7 +31,7 @@ export default function Onboarding() {
                 </Text>
             </ScrollView>
             <View style={styles.footer}>
-                <Link href='/' style={styles.continue}>
+                <Link href={'/'} style={styles.continue}>
                     <Text style={styles.continueText}>Alles duidelijk? Druk hier</Text>
                 </Link>
             </View>
