@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { db } from "../firebase.config";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import useLocation from "../hooks/useLocation";
-import backButton from "../components/backButton";
+import BackButton from "../components/BackButton";
 
 export default function Report() {
     const [alert, setAlert] = useState('');
@@ -70,7 +70,7 @@ export default function Report() {
             </View>
 
             <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] h-[15%] justify-center items-center px-4">
-                {backButton()}
+                <BackButton/>
             </View>
         </SafeAreaView>
     );

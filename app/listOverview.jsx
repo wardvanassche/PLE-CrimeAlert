@@ -2,7 +2,7 @@ import {FlatList, SafeAreaView, Text, View} from "react-native";
 import {Link} from "expo-router";
 import React from "react";
 import useAlerts from "../hooks/useAlerts";
-import backButton from "../components/backButton";
+import BackButton from "../components/BackButton";
 
 export default function ListOverview() {
     const {alerts} = useAlerts();
@@ -42,7 +42,7 @@ export default function ListOverview() {
             />
 
             <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] h-[15%] justify-center items-center px-4">
-                {backButton()}
+                <BackButton/>
             </View>
         </SafeAreaView>
     );

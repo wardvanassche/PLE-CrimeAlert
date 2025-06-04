@@ -1,10 +1,10 @@
 import {SafeAreaView, StyleSheet, Text, View} from "react-native"
 import {Link} from "expo-router";
-import {FontAwesome} from "@expo/vector-icons";
 import React from "react";
 import MapView, {Marker} from 'react-native-maps';
 import useLocation from "../hooks/useLocation";
 import useAlerts from "../hooks/useAlerts";
+import BackButton from "../components/BackButton";
 
 export default function MapOverview() {
     const {latitude, longitude, errorMsg} = useLocation();
@@ -39,7 +39,6 @@ export default function MapOverview() {
                     latitudeDelta: 0.01,
                     longitudeDelta: 0.01,
                 }}
-                mapType="hybrid"
             >
                 <Marker coordinate={{
                     latitude: latitude,
@@ -62,13 +61,8 @@ export default function MapOverview() {
                 ))}
             </MapView>
 
-            <View style={styles.footer}>
-                <Link href="/" style={styles.link}>
-                    <View style={styles.row}>
-                        <FontAwesome name="arrow-left" size={30} color="#000"/>
-                        <Text style={styles.linkText}>Terug</Text>
-                    </View>
-                </Link>
+            <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] h-[15%] justify-center items-center px-4">
+                <BackButton/>
             </View>
         </View>
     )
