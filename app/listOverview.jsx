@@ -1,4 +1,4 @@
-import {SafeAreaView, ScrollView, StyleSheet, Text, View} from "react-native"
+import {FlatList, SafeAreaView, StyleSheet, Text, View} from "react-native"
 import {Link} from "expo-router";
 import {FontAwesome} from "@expo/vector-icons";
 import React from "react";
@@ -7,7 +7,13 @@ import useAlerts from "../hooks/useAlerts";
 export default function ListOverview() {
     const {alerts} = useAlerts();
 
-    if (!alerts) return <Text>Loading...</Text>;
+    if (!alerts) {
+        return (
+            <View className="flex-1 bg-white items-center justify-center">
+                <Text>Loading...</Text>
+            </View>
+        );
+    }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -19,16 +25,23 @@ export default function ListOverview() {
                     <Text style={styles.text}>Kaart</Text>
                 </Link>
             </View>
-            <ScrollView style={styles.items}>
-                {alerts.map((alert, index) => (
-                    <View style={styles.item} key={index}>
-                        <Text style={{color: '#fff', fontSize: 20, fontFamily: 'Inter_700Bold'}}>{alert.alert}</Text>
-                        <Text style={{color: '#fff', fontSize: 15, fontFamily: 'Inter_400Regular', marginBottom: 5,}}>{alert.location}</Text>
-                        <Text style={{color: '#fff', fontSize: 10, fontFamily: 'Inter_400Regular_Italic'}}>Latitude: {alert.latitude}</Text>
-                        <Text style={{color: '#fff', fontSize: 10, fontFamily: 'Inter_400Regular_Italic'}}>Longitude: {alert.longitude}</Text>
+
+            <FlatList
+                className="mb=[25%]"
+                data={alerts}
+                keyExtractor={(item) => item.id}
+                contentContainerStyle={{ padding: 16 }}
+                renderItem={({ item }) => (
+                    <View className="bg-white rounded-2xl shadow-md p-4 mb-4 border border-gray-200">
+                        <Text className="text-lg font-semibold text-gray-800 mb-1">{item.alert}</Text>
+                        <Text className="text-sm text-gray-600">📍 Location: {item.location}</Text>
+                        <Text className="text-sm text-gray-600">🌐 Latitude: {item.latitude}</Text>
+                        <Text className="text-sm text-gray-600">🌐 Longitude: {item.longitude}</Text>
                     </View>
-                ))}
-            </ScrollView>
+                )}
+            />
+
+
             <View style={styles.footer}>
                 <Link href="/" style={styles.link}>
                     <View style={styles.row}>
