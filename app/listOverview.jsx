@@ -1,8 +1,8 @@
-import {FlatList, SafeAreaView, StyleSheet, Text, View} from "react-native"
+import {FlatList, SafeAreaView, Text, View} from "react-native";
 import {Link} from "expo-router";
-import {FontAwesome} from "@expo/vector-icons";
 import React from "react";
 import useAlerts from "../hooks/useAlerts";
+import backButton from "../components/backButton";
 
 export default function ListOverview() {
     const {alerts} = useAlerts();
@@ -16,22 +16,22 @@ export default function ListOverview() {
     }
 
     return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.nav}>
-                <Link href="/listOverview" style={styles.buttonActive}>
-                    <Text style={styles.text}>Lijst</Text>
-                </Link>
-                <Link href="/mapOverview" style={styles.button}>
-                    <Text style={styles.text}>Kaart</Text>
-                </Link>
+        <SafeAreaView className="flex-1 bg-white">
+            <View className="absolute top-12 left-0 right-0 items-center z-10">
+                <View className="flex flex-row justify-center bg-white rounded overflow-hidden">
+                    <Link href="/listOverview" className="bg-[#558B71] py-2 px-10">
+                        <Text className="text-white font-bold text-xl">Lijst</Text>
+                    </Link>
+                    <Link href="/mapOverview" className="bg-gray-200 py-2 px-10">
+                        <Text className="text-black font-medium text-xl">Kaart</Text>
+                    </Link>
+                </View>
             </View>
-
             <FlatList
-                className="mb=[25%]"
+                className="mb-20 px-5 pt-16 bg-white"
                 data={alerts}
                 keyExtractor={(item) => item.id}
-                contentContainerStyle={{ padding: 16 }}
-                renderItem={({ item }) => (
+                renderItem={({item}) => (
                     <View className="bg-white rounded-2xl shadow-md p-4 mb-4 border border-gray-200">
                         <Text className="text-lg font-semibold text-gray-800 mb-1">{item.alert}</Text>
                         <Text className="text-sm text-gray-600">📍 Location: {item.location}</Text>
@@ -41,106 +41,9 @@ export default function ListOverview() {
                 )}
             />
 
-
-            <View style={styles.footer}>
-                <Link href="/" style={styles.link}>
-                    <View style={styles.row}>
-                        <FontAwesome name="arrow-left" size={30} color="#000"/>
-                        <Text style={styles.linkText}>Terug</Text>
-                    </View>
-                </Link>
+            <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] h-[15%] justify-center items-center px-4">
+                {backButton()}
             </View>
         </SafeAreaView>
-    )
+    );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-    },
-    nav: {
-        marginHorizontal: 20,
-        flexDirection: "row",
-        justifyContent: "center",
-        marginBottom: 10,
-    },
-    items: {
-        flex: 1,
-        paddingTop: 10,
-        marginBottom: '15%',
-    },
-    item: {
-        backgroundColor: "#558B71",
-        marginHorizontal: 30,
-        marginVertical: 15,
-        paddingHorizontal: 15,
-        paddingVertical: 25,
-        borderRadius: 10,
-    },
-    buttonActive: {
-        backgroundColor: "#558B71",
-        color: "#fff",
-        fontWeight: 'bold',
-        padding: 5,
-        textAlign: 'center',
-        width: '35%',
-
-        // Shadow for iOS
-        shadowColor: "#000",
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-
-        // Shadow for Android
-        elevation: 3,
-    },
-    button: {
-        backgroundColor: "#fff",
-        padding: 5,
-        textAlign: 'center',
-        width: '35%',
-
-        // Shadow for iOS
-        shadowColor: "#000",
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-
-        // Shadow for Android
-        elevation: 3,
-    },
-
-    text: {
-        fontSize: 24,
-    },
-    footer: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        backgroundColor: '#558B71',
-        padding: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '15%',
-    },
-    link: {
-        padding: 10,
-        width: '50%',
-        borderRadius: 100,
-        borderWidth: 2,
-    },
-    row: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        width: '100%',
-        justifyContent: 'center',
-        gap: 6,
-    },
-    linkText: {
-        color: '#000',
-        fontSize: 24,
-        fontWeight: 'bold',
-    },
-})
