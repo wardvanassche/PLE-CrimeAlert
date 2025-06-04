@@ -1,37 +1,44 @@
-import {SafeAreaView, Text, TouchableOpacity, View} from "react-native"
-import {Link} from "expo-router";
+import { Pressable, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
+import { Link } from "expo-router";
 
 export default function HomeScreen() {
     return (
-        <SafeAreaView className="flex-1 bg-white px-4 items-center">
-            <Link href="/onboarding" className="border-2 rounded-full w-11/20 py-2 mb-36 text-center">
-                <Text className="text-black text-2xl font-bold">Uitleg nodig?</Text>
-                <Text className="text-black text-2xl font-bold">Druk hier</Text>
+        <SafeAreaView className="flex-1 bg-white items-center">
+            <Link href="/onboarding" asChild>
+                <Pressable className="bg-[#558B71] px-6 py-3 rounded-full shadow-md shadow-black/20 w-4/5 items-center absolute top-16">
+                    <Text className="text-white text-2xl font-interbold">Uitleg nodig?</Text>
+                    <Text className="text-white text-xl font-inter">Druk hier</Text>
+                </Pressable>
             </Link>
-            <Link href="/listOverview" className="bg-white p-6 w-7/10 items-center shadow-sm mb-1">
-                <Text className="text-2xl font-inter">
-                    Ik wil meldingen
-                    <Text className=""> bekijken</Text>
-                </Text>
-            </Link>
-            <Link href="/report" className="bg-white p-6 w-7/10 items-center shadow-sm mb-1">
-                <Text className="text-black text-2xl font-normal">
-                    Ik wil een melding
-                    <Text className="font-bold"> maken</Text>
-                </Text>
-            </Link>
-            <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] p-2 h-[15%] justify-center items-center">
-                <Text className="text-black text-lg">Notificaties</Text>
 
-                <View className="flex-row items-center justify-center w-full space-x-1.5 mt-2">
-                    <TouchableOpacity className="rounded-full border-2 bg-white w-1/4 py-2 items-center shadow-sm">
-                        <Text className="text-black text-lg font-bold">AAN</Text>
+            <View className="flex-1 justify-center space-y-8 w-full items-center">
+                <Link href="/listOverview" asChild>
+                    <Pressable className="bg-white px-6 py-5 rounded-2xl shadow-md shadow-black/20 w-4/5 items-center border border-[#558B71]">
+                        <Text className="text-3xl text-black font-intersemibold text-center">
+                            Ik wil meldingen <Text className="text-[#558B71] font-interbold">zien</Text>
+                        </Text>
+                    </Pressable>
+                </Link>
+                <Link href="/report" asChild>
+                    <Pressable className="bg-white px-6 py-5 rounded-2xl shadow-md shadow-black/20 w-4/5 items-center border border-[#558B71]">
+                        <Text className="text-3xl text-black font-intersemibold text-center">
+                            Ik wil meldingen <Text className="text-[#558B71] font-interbold">maken</Text>
+                        </Text>
+                    </Pressable>
+                </Link>
+            </View>
+
+            <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] h-[15%] items-center pt-3">
+                <Text className="text-white text-xl font-interbold">Notificaties</Text>
+                <View className="flex-row items-center justify-center w-full space-x-4 mt-2">
+                    <TouchableOpacity className="rounded-full border border-white bg-white w-28 py-2 items-center shadow-md">
+                        <Text className="text-[#558B71] text-base font-interbold">AAN</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity className="rounded-full border-2 bg-white w-1/4 py-2 items-center shadow-sm">
-                        <Text className="text-black text-lg font-bold">UIT</Text>
+                    <TouchableOpacity className="rounded-full border border-white bg-white w-28 py-2 items-center shadow-md">
+                        <Text className="text-[#558B71] text-base font-interbold">UIT</Text>
                     </TouchableOpacity>
                 </View>
             </View>
         </SafeAreaView>
-    )
+    );
 }
