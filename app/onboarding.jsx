@@ -1,122 +1,50 @@
-import {ScrollView, StyleSheet, Text, View, Image, SafeAreaView} from "react-native"
-import {Link} from "expo-router";
+import { ScrollView, Text, View, Image, SafeAreaView, Pressable } from "react-native";
+import { Link } from "expo-router";
 
 export default function Onboarding() {
     return (
-        <SafeAreaView style={styles.container}>
-            <ScrollView horizontal={false} style={{marginBottom:'10%'}}>
-                <Text style={styles.title}>
-                    Welkom
-                </Text>
-                <Text style={styles.subtitleBold}>
-                    Ons doel
-                </Text>
-                <Text style={styles.body}>
-                    Wij streven ernaar een gevoel van veiligheid en geborgenheid te creëren in de woonomgeving van ouderen.
+        <SafeAreaView className="flex-1 bg-white">
+            <ScrollView className="px-6 mb-20">
+                <Text className="text-3xl font-interbold text-center mt-8">Welkom</Text>
 
-                    Waarom speciaal voor ouderen?
-                    Deze app is met zorg en aandacht ontwikkeld voor ouderen.
+                <Text className="text-xl font-intersemibold text-center mt-10 leading-6">Ons doel</Text>
+                <Text className="text-base font-inter text-black mt-2 leading-6">
+                    Wij streven ernaar een gevoel van veiligheid en geborgenheid te creëren in de woonomgeving van ouderen.
                 </Text>
-                <Text style={styles.body}>
+                <Text className="text-base font-inter text-black mt-2 leading-6">
+                    Waarom speciaal voor ouderen? Deze app is met zorg en aandacht ontwikkeld voor ouderen.
                     Een eenvoudige en duidelijke opzet staat centraal, zodat iedereen er makkelijk mee aan de slag kan — ongeacht ervaring met technologie.
-                    Toegankelijkheid en gebruiksgemak staan centraal, zodat u zich gehoord, gezien en ondersteund voelt.
+                    Toegankelijkheid en gebruiksgemak staan centraal, zodat u zich gehoord, gezien en veilig voelt.
                 </Text>
-                <Text style={styles.subtitleNormal}>
-                    <Text style={styles.subtitleBold}>Bekijk </Text>
-                    meldingen
-                </Text>
-                <View style={styles.row}>
-                    <Image source={require('../assets/images/listOverview.png')} style={styles.image} />
-                    <Image source={require('../assets/images/mapOverview.png')} style={styles.image} />
+
+                <Text className="text-xl font-intersemibold text-center mt-10">Bekijk meldingen</Text>
+                <View className="flex-row justify-center space-x-4 mt-4">
+                    <Image source={require("../assets/images/listOverview.png")} className="w-[45%] h-48" resizeMode="contain" />
+                    <Image source={require("../assets/images/mapOverview.png")} className="w-[45%] h-48" resizeMode="contain" />
                 </View>
-                <Text style={[styles.body, {textAlign: 'center'}]}>
+                <Text className="text-base font-inter text-black text-center mt-4 leading-6">
                     Bekijk meldingen in een lijst of direct op de kaart van uw locatie.
                 </Text>
-                <Text style={styles.subtitleNormal}>
-                    <Text style={styles.subtitleBold}>Maak </Text>
-                    meldingen
-                </Text>
-                <View style={styles.row}>
-                    <Image source={require('../assets/images/alert.png')} style={styles.image} />
-                    <Text style={styles.body}>
-                        Lorem ipsum dolor.
+
+                <Text className="text-xl font-intersemibold text-center mt-10">Maak meldingen</Text>
+                <View className="flex-row justify-center space-x-4 mt-4 items-center">
+                    <Image source={require("../assets/images/alert.png")} className="w-[45%] h-48" resizeMode="contain" />
+                    <Text className="text-base font-inter text-black leading-6 w-[45%]">
+                        Gebruik het formulier om gemakkelijk zelf meldingen te maken.
                     </Text>
                 </View>
-                <Text style={[styles.body, {textAlign: 'center'}]}>
-                    Maak zelf meldingen, gebruik het formulier om meldingen te maken.
+                <Text className="text-base font-inter text-black text-center mt-4 mb-8 leading-6">
+                    U heeft altijd controle over wat u meldt en waar. Hierna wordt uw melding gelijk zichtbaar in het overzicht.
                 </Text>
             </ScrollView>
-            <View style={styles.footer}>
-                <Link href='/' style={styles.continue}>
-                    <Text style={styles.continueText}>Alles duidelijk? Druk hier</Text>
+
+            <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] h-[15%] justify-center items-center px-4">
+                <Link href="/" asChild>
+                    <Pressable className="bg-white mb-2 px-6 py-3 rounded-full w-4/5 items-center shadow-md shadow-black/20">
+                        <Text className="text-[#558B71] text-xl font-interbold">Alles duidelijk? Druk hier</Text>
+                    </Pressable>
                 </Link>
             </View>
         </SafeAreaView>
-    )
+    );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-    },
-    title: {
-        fontSize: 26,
-        fontWeight: 'bold',
-        textAlign: 'center',
-    },
-    subtitleBold: {
-        fontWeight: 'bold',
-        fontSize: 20,
-        textAlign: 'center',
-        marginTop: 30,
-    },
-    subtitleNormal: {
-        fontSize: 20,
-        textAlign: 'center',
-        marginTop: 30,
-        fontStyle: 'italic',
-    },
-    body: {
-        color: '#000',
-        fontSize: 16,
-        lineHeight: 24,
-        paddingHorizontal: 28,
-        paddingVertical: 15,
-    },
-    row: {
-        flexDirection: 'row',
-        marginTop: 24,
-        justifyContent: 'center',
-    },
-    image: {
-        width: '45%',
-        height: 200,
-        resizeMode: 'contain',
-    },
-    continue: {
-        padding: 10,
-        width: '50%',
-        alignItems: 'center',
-        borderRadius: 100,
-        borderWidth: 2,
-        borderColor: '#000',
-        textAlign: 'center',
-    },
-    continueText: {
-        color: '#000',
-        fontSize: 24,
-        fontWeight: 'bold',
-    },
-    footer: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        backgroundColor: '#558B71',
-        padding: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '15%',
-    },
-})
