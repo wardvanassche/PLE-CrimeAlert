@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "PLE-CrimeAlert",
-    "slug": "PLE-CrimeAlert",
-    "scheme": "plecrimealert",
+    "name": "BuurtAlert",
+    "slug": "BuurtAlert",
+    "scheme": "buurtalert",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icons/icon.png",

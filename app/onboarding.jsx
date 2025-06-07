@@ -1,4 +1,4 @@
-import { ScrollView, Text, View, Image, SafeAreaView, Pressable } from "react-native";
+import {ScrollView, Text, View, Image, SafeAreaView, TouchableOpacity} from "react-native";
 import { Link } from "expo-router";
 
 export default function Onboarding() {
@@ -40,9 +40,9 @@ export default function Onboarding() {
 
             <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] h-[15%] justify-center items-center px-4">
                 <Link href="/" asChild>
-                    <Pressable className="bg-white mb-2 px-6 py-3 rounded-full w-4/5 items-center shadow-md shadow-black/20">
+                    <TouchableOpacity className="bg-white mb-2 px-6 py-3 rounded-full w-4/5 items-center shadow-md shadow-black/20">
                         <Text className="text-[#558B71] text-xl font-interbold">Alles duidelijk? Druk hier</Text>
-                    </Pressable>
+                    </TouchableOpacity>
                 </Link>
             </View>
         </SafeAreaView>
