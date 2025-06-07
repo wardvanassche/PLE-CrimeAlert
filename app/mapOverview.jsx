@@ -1,4 +1,4 @@
-import {SafeAreaView, StyleSheet, Text, View} from "react-native"
+import {ActivityIndicator, Text, View} from "react-native"
 import {Link} from "expo-router";
 import React from "react";
 import MapView, {Marker} from 'react-native-maps';
@@ -10,29 +10,36 @@ export default function MapOverview() {
     const {latitude, longitude, errorMsg} = useLocation();
     const {alerts} = useAlerts();
 
-    if (!alerts) return <Text>Loading...</Text>;
+    if (!alerts) {
+        return (
+            <View className="flex-1 justify-center items-center bg-white">
+                <ActivityIndicator size="large" color="#558B71"/>
+            </View>
+        )
+    }
 
     if (latitude === null || longitude === null) {
         return (
-            <View style={styles.container}>
-                <Text style={{padding: 20, textAlign: 'center'}}>{errorMsg}</Text>
+            <View className="flex-1 justify-center items-center bg-white">
+                <Text>{errorMsg}</Text>
             </View>
-        );
+        )
     }
 
     return (
-        <View style={styles.container}>
-            <SafeAreaView style={styles.nav}>
-                <Link href="/listOverview" style={styles.button}>
-                    <Text style={styles.text}>Lijst</Text>
-                </Link>
-                <Link href="/mapOverview" style={styles.buttonActive}>
-                    <Text style={styles.text}>Kaart</Text>
-                </Link>
-            </SafeAreaView>
-
+        <View>
+            <View className="absolute top-16 left-0 right-0 items-center z-10">
+                <View className="flex flex-row rounded">
+                    <Link href="/listOverview" className="bg-gray-100 py-2 px-10">
+                        <Text className="text-black font-inter text-xl">Lijst</Text>
+                    </Link>
+                    <Link href="/mapOverview" className="bg-[#558B71] py-2 px-10">
+                        <Text className="text-white font-interbold text-xl">Kaart</Text>
+                    </Link>
+                </View>
+            </View>
             <MapView
-                style={styles.map}
+                style={{height: '100%'}}
                 region={{
                     latitude: latitude,
                     longitude: longitude,
@@ -48,7 +55,7 @@ export default function MapOverview() {
                         pinColor="lightblue"
                 />
                 {alerts.map((alert, index) => (
-                    <View style={styles.item} key={index}>
+                    <View key={index}>
                         <Marker coordinate={{
                             latitude: alert.latitude,
                             longitude: alert.longitude,
@@ -61,76 +68,9 @@ export default function MapOverview() {
                 ))}
             </MapView>
 
-            <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] h-[15%] justify-center items-center px-4">
+            <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] h-[14%] justify-center items-center px-4">
                 <BackButton/>
             </View>
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-        justifyContent: 'center',
-    },
-    map: {
-        width: '100%',
-        height: '100%',
-    },
-    nav: {
-        position: 'absolute',
-        top: '5%',
-        left: 20,
-        right: 20,
-        flexDirection: "row",
-        justifyContent: "center",
-        zIndex: 10,
-    },
-    buttonActive: {
-        backgroundColor: "#558B71",
-        color: "#fff",
-        fontWeight: 'bold',
-        padding: 5,
-        width: '35%',
-        textAlign: 'center',
-    },
-    button: {
-        backgroundColor: "#fff",
-        padding: 5,
-        width: '35%',
-        textAlign: 'center',
-    },
-    text: {
-        fontSize: 24,
-    },
-    footer: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        backgroundColor: '#558B71',
-        padding: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '15%',
-    },
-    link: {
-        padding: 10,
-        width: '50%',
-        borderRadius: 100,
-        borderWidth: 2,
-    },
-    row: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        width: '100%',
-        justifyContent: 'center',
-        gap: 6,
-    },
-    linkText: {
-        color: '#000',
-        fontSize: 24,
-        fontWeight: 'bold',
-    },
-})
