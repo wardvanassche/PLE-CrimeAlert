@@ -10,7 +10,7 @@ export default function MapOverview() {
     const {latitude, longitude, errorMsg} = useLocation();
     const {alerts} = useAlerts();
 
-    if (!alerts) {
+    if (!alerts || latitude === null || longitude === null) {
         return (
             <View className="flex-1 justify-center items-center bg-white">
                 <ActivityIndicator size="large" color="#558B71"/>
@@ -18,13 +18,13 @@ export default function MapOverview() {
         )
     }
 
-    if (latitude === null || longitude === null) {
-        return (
-            <View className="flex-1 justify-center items-center bg-white">
-                <Text>{errorMsg}</Text>
-            </View>
-        )
-    }
+    // if (latitude === null || longitude === null) {
+    //     return (
+    //         <View className="flex-1 justify-center items-center bg-white">
+    //             <Text>{errorMsg}</Text>
+    //         </View>
+    //     )
+    // }
 
     return (
         <View>
