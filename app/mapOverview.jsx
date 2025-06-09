@@ -1,4 +1,4 @@
-import {ActivityIndicator, Text, View} from "react-native"
+import {ActivityIndicator, StyleSheet, SafeAreaView, Text, View} from "react-native"
 import {Link} from "expo-router";
 import React from "react";
 import MapView, {Marker} from 'react-native-maps';
@@ -27,10 +27,10 @@ export default function MapOverview() {
     // }
 
     return (
-        <View>
-            <View className="absolute top-16 left-0 right-0 items-center z-10">
-                <View className="flex flex-row rounded">
-                    <Link href="/listOverview" className="bg-gray-100 py-2 px-10">
+        <SafeAreaView className="flex-1 bg-white">
+            <View className="absolute top-14 left-0 right-0 items-center z-10">
+                <View className="flex flex-row rounded border border-stone-900 overflow-hidden">
+                    <Link href="/listOverview" className="bg-[#E8F7F4] py-2 px-10">
                         <Text className="text-black font-inter text-xl">Lijst</Text>
                     </Link>
                     <Link href="/mapOverview" className="bg-[#558B71] py-2 px-10">
@@ -39,7 +39,7 @@ export default function MapOverview() {
                 </View>
             </View>
             <MapView
-                style={{height: '100%'}}
+                style={{...StyleSheet.absoluteFillObject}}
                 region={{
                     latitude: latitude,
                     longitude: longitude,
@@ -68,9 +68,9 @@ export default function MapOverview() {
                 ))}
             </MapView>
 
-            <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] h-[14%] justify-center items-center px-4">
+            <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] h-[15%] justify-center items-center px-4">
                 <BackButton/>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
