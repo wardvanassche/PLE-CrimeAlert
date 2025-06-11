@@ -28,7 +28,7 @@ export default function Report() {
 
     const handleSubmit = async () => {
         if (!alert || !selected) {
-            Alert.alert("Lege velden", "Gelieve alle velden in te vullen.");
+            Alert.alert("Geen lege velden", "Alle velden invullen a.u.b.");
             return;
         }
 
@@ -102,7 +102,7 @@ export default function Report() {
                         )}
                         <TouchableOpacity
                             onPress={handleSubmit}
-                            className="bg-[#558B71] py-4 rounded-full items-center shadow-md shadow-black/20 mt-4"
+                            className="bg-[#558B71] py-4 rounded-full items-center shadow-md shadow-black/20 mt-5"
                         >
                             <Text className="text-white text-xl font-interbold">Versturen</Text>
                         </TouchableOpacity>
