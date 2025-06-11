@@ -4,14 +4,13 @@ import {useState, useEffect} from "react";
 export default function useLocation() {
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);
-    const [errorMsg, setErrorMsg] = useState('');
 
     const getCurrentLocation = async () => {
         try {
             let {status} = await Location.requestForegroundPermissionsAsync();
 
             if (status !== 'granted') {
-                setErrorMsg('Permission to access location was denied');
+                console.log('Permission to access location was denied');
                 return;
             }
 
@@ -21,7 +20,6 @@ export default function useLocation() {
 
             if (coords) {
                 const {latitude, longitude} = coords;
-                console.log(latitude, longitude);
                 setLatitude(latitude);
                 setLongitude(longitude);
                 let response = await Location.reverseGeocodeAsync({
@@ -31,7 +29,7 @@ export default function useLocation() {
                 console.log('user location is:', response);
             }
         } catch (error) {
-            setErrorMsg(error.message);
+            console.log('error getting user location', error);
         }
     }
 
@@ -41,5 +39,5 @@ export default function useLocation() {
         })();
     }, []);
 
-    return {latitude, longitude, errorMsg}
+    return {latitude, longitude}
 }

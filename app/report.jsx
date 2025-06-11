@@ -58,7 +58,6 @@ export default function Report() {
                     <Text className="text-3xl font-interbold text-[#558B71] mb-16 mt-8">
                         Melding maken
                     </Text>
-
                     <View className="w-[90%]">
                         <Text className="text-xl font-interbold mb-2">Melding</Text>
                         <TextInput
@@ -70,7 +69,6 @@ export default function Report() {
                             value={alert}
                             onChangeText={setAlert}
                         />
-
                         <Text className="text-xl font-interbold mb-2">Locatie</Text>
                         <TextInput
                             className="border border-gray-300 rounded-xl p-4 text-lg font-inter"
@@ -82,7 +80,6 @@ export default function Report() {
                             onChangeText={setQuery}
                             autoCorrect={false}
                         />
-
                         {suggestions.length > 0 && (
                             <View className="bg-white border border-gray-300 rounded-xl max-h-40 mt-1 mb-4">
                                 <FlatList
@@ -100,7 +97,6 @@ export default function Report() {
                                 />
                             </View>
                         )}
-
                         <TouchableOpacity
                             onPress={handleSubmit}
                             className="bg-[#558B71] py-4 rounded-full items-center shadow-md shadow-black/20 mt-4"

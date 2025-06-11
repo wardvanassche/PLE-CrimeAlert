@@ -1,6 +1,6 @@
-import { Stack } from 'expo-router';
+import {Stack} from 'expo-router';
 import "../global.css";
-import { View, ActivityIndicator } from 'react-native';
+import {View, ActivityIndicator} from 'react-native';
 import {
     useFonts,
     Inter_400Regular,
@@ -24,12 +24,12 @@ export default function RootLayout() {
     if (!fontsLoaded) {
         return (
             <View className="flex-1 justify-center items-center bg-white">
-                <ActivityIndicator size="large" color="#558B71" />
+                <ActivityIndicator size="large" color="#558B71"/>
             </View>
         );
     }
 
     return (
-        <Stack screenOptions={{ headerShown: false }} />
+        <Stack screenOptions={{headerShown: false}}/>
     );
 }

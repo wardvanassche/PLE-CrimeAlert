@@ -5,7 +5,8 @@ import useAlerts from "../hooks/useAlerts";
 import BackButton from "../components/BackButton";
 
 export default function ListOverview() {
-    const {alerts} = useAlerts();
+    const alerts = useAlerts();
+    console.log(alerts);
 
     if (!alerts) {
         return (
@@ -31,18 +32,17 @@ export default function ListOverview() {
                 <FlatList
                     data={alerts}
                     keyExtractor={(item) => item.id}
-                    renderItem={({ item }) => (
+                    renderItem={({item}) => (
                         <View className="bg-[#E8F7F4] border border-[#558B71] rounded-3xl p-6 mb-6 w-[90%] self-center">
                             <Text className="text-xl font-intersemibold text-gray-800 mb-2">{item.alert}</Text>
-                            <Text className="text-lg font-intermedium text-gray-700">📍 Location: <Text className="font-interbold">{item.location}</Text></Text>
-                            <Text className="text-lg font-intermedium text-gray-700">🌐 Latitude: <Text className="font-interbold">{item.latitude}</Text></Text>
-                            <Text className="text-lg font-intermedium text-gray-700">🌐 Longitude: <Text className="font-interbold">{item.longitude}</Text></Text>
+                            <Text className="text-lg font-intermedium text-gray-700">📍 Location: <Text
+                                className="font-interbold">{item.location}</Text></Text>
                         </View>
                     )}
                 />
             </View>
             <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] h-[15%] justify-center items-center px-6">
-                <BackButton />
+                <BackButton/>
             </View>
         </SafeAreaView>
     );

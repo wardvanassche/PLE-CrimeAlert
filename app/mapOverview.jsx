@@ -7,24 +7,17 @@ import useAlerts from "../hooks/useAlerts";
 import BackButton from "../components/BackButton";
 
 export default function MapOverview() {
-    const {latitude, longitude, errorMsg} = useLocation();
-    const {alerts} = useAlerts();
+    const {latitude, longitude} = useLocation();
+    const alerts = useAlerts();
+    console.log(alerts);
 
-    if (!alerts || latitude === null || longitude === null) {
+    if (!alerts || !latitude || !longitude) {
         return (
             <View className="flex-1 justify-center items-center bg-white">
                 <ActivityIndicator size="large" color="#558B71"/>
             </View>
         )
     }
-
-    // if (latitude === null || longitude === null) {
-    //     return (
-    //         <View className="flex-1 justify-center items-center bg-white">
-    //             <Text>{errorMsg}</Text>
-    //         </View>
-    //     )
-    // }
 
     return (
         <SafeAreaView className="flex-1 bg-white">
@@ -52,22 +45,21 @@ export default function MapOverview() {
                     longitude: longitude,
                 }}
                         title="Je bent hier"
-                        pinColor="lightblue"
+                        pinColor="blue"
                 />
                 {alerts.map((alert, index) => (
-                    <View key={index}>
-                        <Marker coordinate={{
+                    <Marker
+                        key={index}
+                        coordinate={{
                             latitude: alert.latitude,
-                            longitude: alert.longitude,
+                            longitude: alert.longitude
                         }}
-                                title={alert.alert}
-                                description={alert.location}
-                                pinColor="red"
-                        />
-                    </View>
+                        title={alert.alert}
+                        description={alert.location}
+                        pinColor={'red'}
+                    />
                 ))}
             </MapView>
-
             <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] h-[15%] justify-center items-center px-4">
                 <BackButton/>
             </View>
