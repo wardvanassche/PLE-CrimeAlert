@@ -44,7 +44,7 @@ export default function MapOverview() {
                     latitude: latitude,
                     longitude: longitude,
                 }}
-                        title="Je bent hier"
+                        title="U bent hier"
                         pinColor="blue"
                 />
                 {alerts.map((alert, index) => (
@@ -56,7 +56,7 @@ export default function MapOverview() {
                         }}
                         title={alert.alert}
                         description={alert.location}
-                        pinColor={'red'}
+                        pincolor='red'
                     />
                 ))}
             </MapView>

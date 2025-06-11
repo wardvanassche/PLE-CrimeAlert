@@ -81,7 +81,7 @@ export default function Report() {
                             autoCorrect={false}
                         />
                         {suggestions.length > 0 && (
-                            <View className="bg-white border border-gray-300 rounded-xl max-h-40 mt-1 mb-4">
+                            <View className="bg-white border border-gray-300 rounded-xl max-h-40 mt-1 mb-3">
                                 <FlatList
                                     keyboardShouldPersistTaps="handled"
                                     data={suggestions}
@@ -89,9 +89,11 @@ export default function Report() {
                                     renderItem={({item}) => (
                                         <TouchableOpacity
                                             onPress={() => selectSuggestion(item)}
-                                            className="px-4 py-2 border-b border-gray-200"
+                                            className="px-4 py-4 border-b border-gray-300"
                                         >
-                                            <Text>{item.display_name}</Text>
+                                            <Text className="font-inter">
+                                                {item.display_name}
+                                            </Text>
                                         </TouchableOpacity>
                                     )}
                                 />
