@@ -1,4 +1,4 @@
-import {Pressable, SafeAreaView, Text, TouchableOpacity, View} from "react-native";
+import {Image, Pressable, SafeAreaView, Text, View} from "react-native";
 import {Link} from "expo-router";
 
 export default function HomeScreen() {
@@ -30,17 +30,7 @@ export default function HomeScreen() {
                 </Link>
             </View>
             <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] h-[15%] items-center pt-3">
-                <Text className="text-white text-xl font-interbold">Notificaties</Text>
-                <View className="flex-row items-center justify-center w-full space-x-4 mt-2">
-                    <TouchableOpacity
-                        className="rounded-full border border-white bg-white w-28 py-2 items-center shadow-md">
-                        <Text className="text-[#558B71] text-base font-interbold">AAN</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        className="rounded-full border border-white bg-white w-28 py-2 items-center shadow-md">
-                        <Text className="text-[#558B71] text-base font-interbold">UIT</Text>
-                    </TouchableOpacity>
-                </View>
+                <Image source={require("../assets/images/logo.png")} className="h-20 w-20 rounded-xl"/>
             </View>
         </SafeAreaView>
     );
