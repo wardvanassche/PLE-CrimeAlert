@@ -19,12 +19,12 @@ export default function ListOverview() {
     return (
         <SafeAreaView className="flex-1 bg-white">
             <View className="absolute top-14 left-0 right-0 items-center z-10">
-                <View className="flex flex-row rounded border border-stone-900  overflow-hidden">
-                    <Link href="/listOverview" className="bg-[#558B71] py-2 px-10">
-                        <Text className="text-white font-bold text-xl">Lijst</Text>
+                <View className="flex-row rounded-full border border-[#558B71] bg-white overflow-hidden">
+                    <Link href="/listOverview" className="bg-[#558B71] py-3 px-12">
+                        <Text className="text-white font-interbold text-lg">Lijst</Text>
                     </Link>
-                    <Link href="/mapOverview" className="bg-[#E8F7F4] py-2 px-10">
-                        <Text className="text-black font-inter text-xl">Kaart</Text>
+                    <Link href="/mapOverview" className="py-3 px-12">
+                        <Text className="text-[#558B71] font-intermedium text-lg">Kaart</Text>
                     </Link>
                 </View>
             </View>
@@ -33,15 +33,18 @@ export default function ListOverview() {
                     data={alerts}
                     keyExtractor={(item) => item.id}
                     renderItem={({item}) => (
-                        <View className="bg-[#E8F7F4] border border-[#558B71] rounded-3xl p-6 mb-6 w-[90%] self-center">
-                            <Text className="text-xl font-intersemibold text-gray-800 mb-2">{item.alert}</Text>
-                            <Text className="text-lg font-intermedium text-gray-700">📍 Locatie: <Text
-                                className="text-base font-interbold">{item.location}</Text></Text>
+                        <View className="bg-white rounded-xl shadow-lg p-5 mb-4 w-[90%] self-center border border-[#558B71]">
+                            <Text className="text-xl font-intersemibold text-[#2C3E50] mb-1">{item.alert}</Text>
+                            <View className="mt-2">
+                                <Text className="text-sm font-inter text-gray-500 uppercase tracking-wide">Locatie</Text>
+                                <Text className="text-base font-intersemibold text-gray-800">{item.location}</Text>
+                            </View>
+
                         </View>
                     )}
                 />
             </View>
-            <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] h-[15%] justify-center items-center px-6">
+            <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] h-[15%] justify-center items-center px-4">
                 <BackButton/>
             </View>
         </SafeAreaView>

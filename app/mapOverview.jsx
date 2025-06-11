@@ -22,12 +22,12 @@ export default function MapOverview() {
     return (
         <SafeAreaView className="flex-1 bg-white">
             <View className="absolute top-14 left-0 right-0 items-center z-10">
-                <View className="flex flex-row rounded border border-stone-900 overflow-hidden">
-                    <Link href="/listOverview" className="bg-[#E8F7F4] py-2 px-10">
-                        <Text className="text-black font-inter text-xl">Lijst</Text>
+                <View className="flex-row rounded-full border border-[#558B71] bg-white overflow-hidden">
+                    <Link href="/listOverview" className="py-3 px-12">
+                        <Text className="text-[#558B71] font-intermedium text-lg">Lijst</Text>
                     </Link>
-                    <Link href="/mapOverview" className="bg-[#558B71] py-2 px-10">
-                        <Text className="text-white font-interbold text-xl">Kaart</Text>
+                    <Link href="/mapOverview" className="bg-[#558B71] py-3 px-12">
+                        <Text className="text-white font-interbold text-lg">Kaart</Text>
                     </Link>
                 </View>
             </View>
