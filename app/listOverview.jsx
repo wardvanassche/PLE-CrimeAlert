@@ -35,8 +35,8 @@ export default function ListOverview() {
                     renderItem={({item}) => (
                         <View className="bg-[#E8F7F4] border border-[#558B71] rounded-3xl p-6 mb-6 w-[90%] self-center">
                             <Text className="text-xl font-intersemibold text-gray-800 mb-2">{item.alert}</Text>
-                            <Text className="text-lg font-intermedium text-gray-700">📍 Location: <Text
-                                className="font-interbold">{item.location}</Text></Text>
+                            <Text className="text-lg font-intermedium text-gray-700">📍 Locatie: <Text
+                                className="text-base font-interbold">{item.location}</Text></Text>
                         </View>
                     )}
                 />
