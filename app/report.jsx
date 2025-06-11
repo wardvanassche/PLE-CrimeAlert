@@ -62,6 +62,7 @@ export default function Report() {
                         <Text className="text-xl font-interbold mb-2">Melding</Text>
                         <TextInput
                             className="border border-gray-300 rounded-xl p-4 mb-6 text-lg font-inter"
+                            multiline
                             style={{
                                 lineHeight: 22,
                             }}
