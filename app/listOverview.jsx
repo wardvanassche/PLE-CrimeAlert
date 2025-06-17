@@ -33,14 +33,40 @@ export default function ListOverview() {
                     data={alerts}
                     keyExtractor={(item) => item.id}
                     renderItem={({item}) => (
-                        <View className="bg-white rounded-xl shadow-lg p-5 mb-4 w-[90%] self-center border border-[#558B71]">
-                            <Text className="text-xl font-intersemibold text-[#2C3E50] mb-1">{item.alert}</Text>
+                        <View
+                            className="bg-white rounded-xl shadow-lg p-5 mb-4 w-[90%] self-center border border-[#558B71]">
+                            <Text className="text-xl font-intersemibold mb-1">{item.alert}</Text>
+
                             <View className="mt-2">
-                                <Text className="text-sm font-inter text-gray-500 uppercase tracking-wide">Locatie</Text>
+                                <Text
+                                    className="text-sm font-inter text-gray-500 uppercase tracking-wide">Locatie</Text>
                                 <Text className="text-base font-intersemibold text-gray-800">{item.location}</Text>
                             </View>
 
+                            {item.timestamp && (
+                                <View className="mt-2">
+                                    <Text className="text-sm font-inter text-gray-500 uppercase tracking-wide">Tijdstip</Text>
+                                    <Text className="text-base font-intersemibold text-gray-800">
+                                        {(() => {
+                                            try {
+                                                const date = item.timestamp.toDate();
+                                                return date.toLocaleString('nl-NL', {
+                                                    day: 'numeric',
+                                                    month: 'long',
+                                                    year: 'numeric',
+                                                    hour: '2-digit',
+                                                    minute: '2-digit',
+                                                });
+                                            } catch (e) {
+                                                return 'Onbekend';
+                                            }
+                                        })()}
+                                    </Text>
+                                </View>
+                            )}
+
                         </View>
+
                     )}
                 />
             </View>

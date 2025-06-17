@@ -32,7 +32,7 @@ export default function HomeScreen() {
             <View className="absolute bottom-0 left-0 right-0 bg-[#558B71] h-[15%] items-center py-3 flex-row justify-center">
                 <Image
                     source={require("../assets/images/logo.png")}
-                    className="h-16 w-16 rounded-xl"
+                    className="h-12 w-12 rounded-xl"
                 />
                 <Text className="text-white text-xl ml-3 font-interbold">OuderenBuurtWacht</Text>
             </View>

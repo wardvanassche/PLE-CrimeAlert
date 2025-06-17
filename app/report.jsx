@@ -24,6 +24,7 @@ export default function Report() {
         suggestions,
         selectSuggestion,
         selected,
+        formatAddress,
     } = useLocationAutocomplete();
 
     const handleSubmit = async () => {
@@ -93,7 +94,7 @@ export default function Report() {
                                             className="px-4 py-4 border-b border-gray-300"
                                         >
                                             <Text className="font-inter">
-                                                {item.display_name}
+                                                {formatAddress(item)}
                                             </Text>
                                         </TouchableOpacity>
                                     )}
