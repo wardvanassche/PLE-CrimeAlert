@@ -22,36 +22,13 @@ export default function useLocationAutocomplete() {
         }
     };
 
-    const formatAddress = (item) => {
-        const address = item.address || {};
-        const name = item.name || ''; // LocationIQ provides this when it's a POI
-
-        const road = address.road || '';
-        const houseNumber = address.house_number || '';
-        const postcode = address.postcode || '';
-        const city = address.city || address.town || address.village || '';
-
-        const parts = [];
-
-        // If it's a business/place, include name
-        if (name) parts.push(name);
-
-        // Add street + number
-        if (road || houseNumber) parts.push(`${road} ${houseNumber}`.trim());
-
-        // Add postcode + city
-        if (postcode || city) parts.push(`${postcode} ${city}`.trim());
-
-        return parts.join(', ');
-    };
-
     const selectSuggestion = (item) => {
         const location = {
-            name: formatAddress(item),
+            name: item.display_name,
             latitude: parseFloat(item.lat),
             longitude: parseFloat(item.lon),
         };
-        setQuery(formatAddress(item));
+        setQuery(item.display_name);
         setSuggestions([]);
         setSelected(location);
     };
@@ -62,6 +39,5 @@ export default function useLocationAutocomplete() {
         suggestions,
         selectSuggestion,
         selected,
-        formatAddress,
     };
 }
