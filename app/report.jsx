@@ -4,12 +4,12 @@ import {
     TouchableOpacity,
     View,
     Alert,
-    SafeAreaView,
     FlatList,
     KeyboardAvoidingView,
     TouchableWithoutFeedback,
     Keyboard
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import React, {useState} from "react";
 import {db} from "../firebase.config";
 import {collection, addDoc, Timestamp} from "firebase/firestore";

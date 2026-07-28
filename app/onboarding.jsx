@@ -1,4 +1,5 @@
-import {ScrollView, Text, View, Image, SafeAreaView, TouchableOpacity} from "react-native";
+import {ScrollView, Text, View, Image, TouchableOpacity} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import {Link} from "expo-router";
 
 export default function Onboarding() {

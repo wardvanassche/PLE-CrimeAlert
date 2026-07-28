@@ -1,4 +1,5 @@
-import {ActivityIndicator, StyleSheet, SafeAreaView, Text, View} from "react-native"
+import {ActivityIndicator, StyleSheet, Text, View} from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context";
 import {Link} from "expo-router";
 import React from "react";
 import MapView, {Marker, Callout} from 'react-native-maps';

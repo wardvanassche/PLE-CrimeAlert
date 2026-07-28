@@ -1,4 +1,5 @@
-import {ActivityIndicator, FlatList, SafeAreaView, Text, View} from "react-native";
+import {ActivityIndicator, FlatList, Text, View} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import {Link} from "expo-router";
 import React from "react";
 import useAlerts from "../hooks/useAlerts";
